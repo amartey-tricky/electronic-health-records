@@ -1,4 +1,4 @@
-import { pgTable, varchar, serial, text, timestamp, integer, boolean, decimal, jsonb } from "drizzle-orm/pg-core";
+import { boolean, decimal, integer, jsonb, pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core"
 
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -6,7 +6,7 @@ export const users = pgTable("users", {
   password: varchar("password", { length: 255 }).notNull(),
   role: varchar("role", { length: 50 }).notNull(),
   createdAt: timestamp("created_at").defaultNow(),
-});
+})
 
 export const patients = pgTable("patients", {
   id: serial("id").primaryKey(),
@@ -17,7 +17,7 @@ export const patients = pgTable("patients", {
   contactNumber: varchar("contact_number", { length: 20 }),
   address: text("address"),
   createdAt: timestamp("created_at").defaultNow(),
-});
+})
 
 export const visits = pgTable("visits", {
   id: serial("id").primaryKey(),
@@ -33,7 +33,7 @@ export const visits = pgTable("visits", {
   doctorsNotes: text("doctors_notes"),
   //nursesNotes: text("nurses_notes"),
   status: varchar("status", { length: 50 }).notNull().default("open"),
-});
+})
 
 export const nursesNotes = pgTable("nurses_notes", {
   id: serial("id").primaryKey(),
@@ -43,14 +43,14 @@ export const nursesNotes = pgTable("nurses_notes", {
   createdAt: timestamp("created_at").defaultNow(),
 })
 
-export const fileUploads = pgTable('file_uploads', {
-  id: serial('id').primaryKey(),
-  visitId: integer('visit_id').references(() => visits.id),
-  nurseId: integer('nurse_id').references(() => users.id),
-  fileName: varchar('file_name', { length: 255 }).notNull(),
-  fileType: varchar('file_type', { length: 10 }).notNull(),
-  fileUrl: text('file_url').notNull(),
-  createdAt: timestamp('created_at').defaultNow(),
+export const fileUploads = pgTable("file_uploads", {
+  id: serial("id").primaryKey(),
+  visitId: integer("visit_id").references(() => visits.id),
+  nurseId: integer("nurse_id").references(() => users.id),
+  fileName: varchar("file_name", { length: 255 }).notNull(),
+  fileType: varchar("file_type", { length: 10 }).notNull(),
+  fileUrl: text("file_url").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
 })
 
 export const prescriptions = pgTable("prescriptions", {

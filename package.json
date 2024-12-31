@@ -9,7 +9,11 @@
     "lint": "next lint",
     "biome-lint": "biome check **/*.tsx",
     "biome-format": "biome check **/*.tsx --write",
-    "biome-format:unsafe": "biome check **/*.tsx --fix --unsafe"
+    "biome-format:unsafe": "biome check **/*.tsx --fix --unsafe",
+    "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate",
+    "studio": "drizzle-kit studio --port 3001 --verbose"
+
   },
   "dependencies": {
     "@clerk/nextjs": "^6.9.6",
